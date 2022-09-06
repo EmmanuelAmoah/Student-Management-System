@@ -40,10 +40,10 @@ def user_options(user_input):
                     student_database.append(student_info)
             else:
                 welcome_screen()
-            response = input('Do You Have another Student?(yes/no): ').lower()
+            response = input(WHITE + 'Do You Have another Student?(yes/no): ').lower()
         welcome_screen()
     elif user_input == 2:
-        pass
+        view_student_details()
     elif user_input == 3:
         pass
     elif user_input == 4:
@@ -90,6 +90,34 @@ def add_student_info():
     # creating student object
     student_info = Student(sid, f_name, m_name, l_name, dob, course, duration)
     return student_info
+
+
+# view student details
+def view_student_details():
+    if len(student_database) > 0:
+        print(BLUE, '**** STUDENT DETAILS ****')
+        print('id\t\tFirst Name\t\tMiddle name\t\tLast name\t\tDate Of Birth\t\tcourse\t\tDuration'.upper())
+        for student in student_database:
+            print(
+                f'{student.get_id()}\t{student.get_first_name()}\t\t{student.get_middle_name()}\t\t\t{student.get_last_name()}\t\t\t{student.get_dob()}\t\t\t{student.get_course()}\t\t\t{student.get_duration()}')
+    else:
+        print(RED, f'No Student Record Yet\n')
+    welcome_screen()
+
+
+def search_student_details():
+    if len(student_database) > 0:
+        student_id = input(WHITE + 'please enter student id: ').capitalize()
+        if len(student_id) > 0:
+            for student in student_database:
+                if student.get_id() == student_id:
+                    pass
+        else:
+            print(RED, 'Student ID Required, Try Again!!!')
+    else:
+        print(RED, 'No Record in The Database'.capitalize())
+    welcome_screen()
+
 
 # calling functions
 welcome_screen()

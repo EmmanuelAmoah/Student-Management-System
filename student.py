@@ -45,8 +45,8 @@ class Student:
     def get_course(self):
         return self.course
 
-    def set_period(self, duration):
+    def set_duration(self, duration):
         self.duration = duration
 
-    def get_period(self):
+    def get_duration(self):
         return self.duration
