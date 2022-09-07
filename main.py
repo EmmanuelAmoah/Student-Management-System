@@ -47,7 +47,7 @@ def user_options(user_input):
     elif user_input == 3:
         pass
     elif user_input == 4:
-        pass
+        delete_student_details()
     elif user_input == 5:
         pass
     elif user_input == 6:
@@ -118,6 +118,26 @@ def search_student_details():
         print(RED, 'No Record in The Database'.capitalize())
     welcome_screen()
 
+
+def delete_student_details():
+    if len(student_database) > 0:
+        student_id = input('Please Enter Student ID: ')
+        if len(student_id) > 0:
+            is_delete = False
+            for student in student_database:
+                if student.get_id() == student_id:
+                    print(GREEN, f'{student.get_first_name()} Has been Deleted Successfully')
+                    student_database.remove(student)
+                    is_delete = True
+                    break
+
+            if not is_delete:
+                print(RED, 'Student ID not found, try again!')
+
+        else:
+            print(RED, 'Student ID Required!!!')
+    else:
+        print('No Record to Delete')
 
 # calling functions
 welcome_screen()
